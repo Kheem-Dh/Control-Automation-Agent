@@ -1,0 +1,16 @@
+ticket_id,employee_id,system,access_level,approver,approver_role,status,decision_date
+TKT00000,EMP0182,Billing,privileged,gina19,Security_Officer,approved,2025-03-06T09:00:00
+TKT00001,EMP0168,VPN,privileged,samantha10,IT_Manager,approved,2025-09-30T09:00:00
+TKT00002,EMP0050,VPN,privileged,gonzalezdebbie,IT_Manager,approved,2025-07-11T09:00:00
+TKT00003,EMP0037,ERP,privileged,christopherboone,Security_Officer,approved,2025-12-07T09:00:00
+TKT00004,EMP0123,ERP,privileged,david70,Security_Officer,approved,2025-11-17T09:00:00
+TKT00005,EMP0143,HR_Portal,privileged,sandrahamilton,IT_Manager,approved,2025-03-09T09:00:00
+TKT00006,EMP0015,VPN,privileged,ycrawford,IT_Manager,approved,2025-09-13T09:00:00
+TKT00007,EMP0035,VPN,privileged,nthompson,Security_Officer,approved,2025-05-27T09:00:00
+TKT00008,EMP0043,DataWarehouse,privileged,joshuagriffin,Security_Officer,approved,2025-12-13T09:00:00
+TKT00009,EMP0088,HR_Portal,privileged,austinharvey,IT_Manager,approved,2025-03-25T09:00:00
+TKT00010,EMP0046,DataWarehouse,privileged,deborahporter,IT_Manager,approved,2025-07-28T09:00:00
+TKT00011,EMP0045,DataWarehouse,privileged,rbrown,IT_Manager,approved,2025-08-25T09:00:00
+TKT00012,EMP0148,HR_Portal,privileged,mtaylor,Contractor,approved,2025-03-21T09:00:00
+TKT00013,EMP0036,ERP,privileged,,,approved,2025-04-01T09:00:00
+TKT00014,EMP0157,Billing,privileged,,,approved,2025-04-16T09:00:00

@@ -1,0 +1,26 @@
+id: AC-3
+name: Privileged access authorisation
+statement: >-
+  Every privileged-access grant has a matching request that was approved by an
+  authorised approver.
+population: access_log
+exception_definition: >-
+  A privileged-access grant with no matching approved ticket, or whose ticket
+  was approved by an approver who is not authorised.
+
+evidence:
+  - access_log
+  - approval_tickets
+
+# Only these approver roles may authorise a privileged grant.
+authorised_approver_roles:
+  - IT_Manager
+  - Security_Officer
+
+# A ticket must be in this status to count as an approval.
+approved_status: approved
+
+confidence:
+  no_ticket: 0.95              # privileged grant with no ticket at all
+  unauthorised_approver: 0.90  # ticket approved by a non-authorised role
+  malformed_evidence: 0.42     # contradictory/blank approval evidence

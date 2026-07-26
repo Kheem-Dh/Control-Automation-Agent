@@ -1,0 +1,52 @@
+{
+  "seed": 42,
+  "n": 200,
+  "generated_at": "2026-01-01T09:00:00",
+  "AC-1": {
+    "population": "hr_terminations",
+    "key": "employee_id",
+    "exceptions": [
+      "EMP0052",
+      "EMP0061",
+      "EMP0066",
+      "EMP0080",
+      "EMP0171",
+      "EMP0183"
+    ],
+    "ambiguous": [
+      "EMP0067",
+      "EMP0101"
+    ]
+  },
+  "AC-2": {
+    "population": "role_assignments",
+    "key": "employee_id",
+    "exceptions": [
+      "EMP0046",
+      "EMP0074",
+      "EMP0079",
+      "EMP0086",
+      "EMP0138"
+    ],
+    "ambiguous": [
+      "EMP0032",
+      "EMP0102"
+    ]
+  },
+  "AC-3": {
+    "population": "access_log",
+    "key": "event_id",
+    "exceptions": [
+      "EVT00404",
+      "EVT00405",
+      "EVT00406",
+      "EVT00407",
+      "EVT00408",
+      "EVT00409"
+    ],
+    "ambiguous": [
+      "EVT00410",
+      "EVT00411"
+    ]
+  }
+}

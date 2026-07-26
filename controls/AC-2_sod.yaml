@@ -1,0 +1,33 @@
+id: AC-2
+name: Segregation of duties
+statement: >-
+  No user simultaneously holds two roles that form a segregation-of-duties
+  (SoD) conflict.
+population: role_assignments
+exception_definition: >-
+  A user who is assigned both roles of any defined conflicting pair.
+
+evidence:
+  - role_assignments
+
+# Conflicting role pairs. Holding both roles in any pair is an SoD violation.
+conflicting_role_pairs:
+  - [create_vendor, approve_payment]
+  - [create_user, approve_access]
+  - [submit_journal, approve_journal]
+
+# The full set of roles the generator/tester recognises. A role outside this
+# set is treated as malformed evidence and escalated rather than cleared.
+known_roles:
+  - create_vendor
+  - approve_payment
+  - create_user
+  - approve_access
+  - submit_journal
+  - approve_journal
+  - read_only
+  - reporting
+
+confidence:
+  conflict: 0.98            # both roles of a pair clearly assigned
+  malformed_evidence: 0.45 # unknown/blank role in the assignment

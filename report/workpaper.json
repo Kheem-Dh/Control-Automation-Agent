@@ -1,0 +1,842 @@
+{
+  "run": {
+    "controls": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "threshold": 0.7,
+    "provider": "rule",
+    "data_dir": "data"
+  },
+  "summary": {
+    "tested": 245,
+    "passed": 222,
+    "exceptions": 17,
+    "escalated": 6,
+    "false_positives_dropped": 0
+  },
+  "controls": {
+    "AC-1": {
+      "id": "AC-1",
+      "name": "Timely termination of access",
+      "statement": "Terminated employees have all system access revoked within the policy window (24 hours) of their termination date.",
+      "tested": 25,
+      "passed": 17,
+      "exceptions_count": 6,
+      "escalated_count": 2,
+      "false_positives_dropped_count": 0,
+      "exceptions": [
+        {
+          "record_id": "EMP0066",
+          "rule": "revoked_late",
+          "confidence": 0.97,
+          "reasoning": "EMP0066 was terminated on 2025-12-23; access on HR_Portal was not revoked until 2025-12-29 05:00:00 \u2014 5 days, 20:00:00 after termination, beyond the 24h window.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Revoke 2025-12-29 05:00:00 is beyond the window (deadline 2025-12-24 09:00:00)."
+          },
+          "evidence_cited": [
+            "employee_id=EMP0066",
+            "event_id=EVT00357",
+            "event_id=EVT00358"
+          ],
+          "evidence": [
+            {
+              "employee_id": "EMP0066",
+              "employee_name": "Tracy House",
+              "department": "IT",
+              "termination_date": "2025-12-23T09:00:00",
+              "termination_type": "voluntary"
+            },
+            {
+              "event_id": "EVT00357",
+              "employee_id": "EMP0066",
+              "employee_name": "Tracy House",
+              "system": "HR_Portal",
+              "access_level": "standard",
+              "action": "grant",
+              "timestamp": "2025-01-04T09:00:00",
+              "performed_by": "marcia99"
+            },
+            {
+              "event_id": "EVT00358",
+              "employee_id": "EMP0066",
+              "employee_name": "Tracy House",
+              "system": "HR_Portal",
+              "access_level": "standard",
+              "action": "revoke",
+              "timestamp": "2025-12-29T05:00:00",
+              "performed_by": "andersoncolin"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0052",
+          "rule": "never_revoked",
+          "confidence": 0.9,
+          "reasoning": "EMP0052 was terminated on 2025-11-06 but grant EVT00359 on ERP has no revocation record \u2014 access is still active.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "No revoke for grant EVT00359 \u2014 access still active."
+          },
+          "evidence_cited": [
+            "employee_id=EMP0052",
+            "event_id=EVT00359"
+          ],
+          "evidence": [
+            {
+              "employee_id": "EMP0052",
+              "employee_name": "Crystal Robinson",
+              "department": "HR",
+              "termination_date": "2025-11-06T09:00:00",
+              "termination_type": "voluntary"
+            },
+            {
+              "event_id": "EVT00359",
+              "employee_id": "EMP0052",
+              "employee_name": "Crystal Robinson",
+              "system": "ERP",
+              "access_level": "standard",
+              "action": "grant",
+              "timestamp": "2024-11-17T09:00:00",
+              "performed_by": "laura58"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0171",
+          "rule": "never_revoked",
+          "confidence": 0.9,
+          "reasoning": "EMP0171 was terminated on 2025-10-04 but grant EVT00360 on ERP has no revocation record \u2014 access is still active.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "No revoke for grant EVT00360 \u2014 access still active."
+          },
+          "evidence_cited": [
+            "employee_id=EMP0171",
+            "event_id=EVT00360"
+          ],
+          "evidence": [
+            {
+              "employee_id": "EMP0171",
+              "employee_name": "Darlene Miller",
+              "department": "Finance",
+              "termination_date": "2025-10-04T09:00:00",
+              "termination_type": "involuntary"
+            },
+            {
+              "event_id": "EVT00360",
+              "employee_id": "EMP0171",
+              "employee_name": "Darlene Miller",
+              "system": "ERP",
+              "access_level": "standard",
+              "action": "grant",
+              "timestamp": "2025-08-21T09:00:00",
+              "performed_by": "kari39"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0183",
+          "rule": "never_revoked",
+          "confidence": 0.9,
+          "reasoning": "EMP0183 was terminated on 2025-12-24 but grant EVT00361 on HR_Portal has no revocation record \u2014 access is still active.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "No revoke for grant EVT00361 \u2014 access still active."
+          },
+          "evidence_cited": [
+            "employee_id=EMP0183",
+            "event_id=EVT00361"
+          ],
+          "evidence": [
+            {
+              "employee_id": "EMP0183",
+              "employee_name": "Ashley Barton",
+              "department": "Sales",
+              "termination_date": "2025-12-24T09:00:00",
+              "termination_type": "involuntary"
+            },
+            {
+              "event_id": "EVT00361",
+              "employee_id": "EMP0183",
+              "employee_name": "Ashley Barton",
+              "system": "HR_Portal",
+              "access_level": "standard",
+              "action": "grant",
+              "timestamp": "2025-05-25T09:00:00",
+              "performed_by": "cporter"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0080",
+          "rule": "revoked_late",
+          "confidence": 0.97,
+          "reasoning": "EMP0080 was terminated on 2025-11-30; access on VPN was not revoked until 2025-12-10 01:00:00 \u2014 9 days, 16:00:00 after termination, beyond the 24h window.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Revoke 2025-12-10 01:00:00 is beyond the window (deadline 2025-12-01 09:00:00)."
+          },
+          "evidence_cited": [
+            "employee_id=EMP0080",
+            "event_id=EVT00362",
+            "event_id=EVT00363"
+          ],
+          "evidence": [
+            {
+              "employee_id": "EMP0080",
+              "employee_name": "Kelly Donovan",
+              "department": "Operations",
+              "termination_date": "2025-11-30T09:00:00",
+              "termination_type": "retirement"
+            },
+            {
+              "event_id": "EVT00362",
+              "employee_id": "EMP0080",
+              "employee_name": "Kelly Donovan",
+              "system": "VPN",
+              "access_level": "standard",
+              "action": "grant",
+              "timestamp": "2025-04-04T09:00:00",
+              "performed_by": "taylormason"
+            },
+            {
+              "event_id": "EVT00363",
+              "employee_id": "EMP0080",
+              "employee_name": "Kelly Donovan",
+              "system": "VPN",
+              "access_level": "standard",
+              "action": "revoke",
+              "timestamp": "2025-12-10T01:00:00",
+              "performed_by": "jstone"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0061",
+          "rule": "revoked_late",
+          "confidence": 0.97,
+          "reasoning": "EMP0061 was terminated on 2025-12-10; access on VPN was not revoked until 2026-01-07 19:00:00 \u2014 28 days, 10:00:00 after termination, beyond the 24h window.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Revoke 2026-01-07 19:00:00 is beyond the window (deadline 2025-12-11 09:00:00)."
+          },
+          "evidence_cited": [
+            "employee_id=EMP0061",
+            "event_id=EVT00364",
+            "event_id=EVT00365"
+          ],
+          "evidence": [
+            {
+              "employee_id": "EMP0061",
+              "employee_name": "Gerald Hensley",
+              "department": "IT",
+              "termination_date": "2025-12-10T09:00:00",
+              "termination_type": "voluntary"
+            },
+            {
+              "event_id": "EVT00364",
+              "employee_id": "EMP0061",
+              "employee_name": "Gerald Hensley",
+              "system": "VPN",
+              "access_level": "standard",
+              "action": "grant",
+              "timestamp": "2025-10-01T09:00:00",
+              "performed_by": "markaustin"
+            },
+            {
+              "event_id": "EVT00365",
+              "employee_id": "EMP0061",
+              "employee_name": "Gerald Hensley",
+              "system": "VPN",
+              "access_level": "standard",
+              "action": "revoke",
+              "timestamp": "2026-01-07T19:00:00",
+              "performed_by": "phillipjensen"
+            }
+          ]
+        }
+      ],
+      "escalated": [
+        {
+          "record_id": "EMP0067",
+          "rule": "malformed_evidence",
+          "confidence": 0.4,
+          "reasoning": "Termination date for EMP0067 is missing or unparseable (''); cannot verify the revocation window. Routing to human review.",
+          "verifier": {
+            "verdict": "uncertain",
+            "note": "Malformed evidence confirmed; escalate."
+          },
+          "evidence_cited": [
+            "employee_id=EMP0067",
+            "event_id=EVT00366",
+            "event_id=EVT00367"
+          ],
+          "evidence": [
+            {
+              "employee_id": "EMP0067",
+              "employee_name": "Carol Tucker",
+              "department": "IT",
+              "termination_date": "",
+              "termination_type": "voluntary"
+            },
+            {
+              "event_id": "EVT00366",
+              "employee_id": "EMP0067",
+              "employee_name": "Carol Tucker",
+              "system": "VPN",
+              "access_level": "standard",
+              "action": "grant",
+              "timestamp": "2024-12-25T09:00:00",
+              "performed_by": "brittney88"
+            },
+            {
+              "event_id": "EVT00367",
+              "employee_id": "EMP0067",
+              "employee_name": "Carol Tucker",
+              "system": "VPN",
+              "access_level": "standard",
+              "action": "revoke",
+              "timestamp": "",
+              "performed_by": "terickson"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0101",
+          "rule": "malformed_evidence",
+          "confidence": 0.4,
+          "reasoning": "Termination date for EMP0101 is missing or unparseable (''); cannot verify the revocation window. Routing to human review.",
+          "verifier": {
+            "verdict": "uncertain",
+            "note": "Malformed evidence confirmed; escalate."
+          },
+          "evidence_cited": [
+            "employee_id=EMP0101",
+            "event_id=EVT00368",
+            "event_id=EVT00369"
+          ],
+          "evidence": [
+            {
+              "employee_id": "EMP0101",
+              "employee_name": "Cameron Parker",
+              "department": "IT",
+              "termination_date": "",
+              "termination_type": "voluntary"
+            },
+            {
+              "event_id": "EVT00368",
+              "employee_id": "EMP0101",
+              "employee_name": "Cameron Parker",
+              "system": "HR_Portal",
+              "access_level": "standard",
+              "action": "grant",
+              "timestamp": "2025-03-22T09:00:00",
+              "performed_by": "xcabrera"
+            },
+            {
+              "event_id": "EVT00369",
+              "employee_id": "EMP0101",
+              "employee_name": "Cameron Parker",
+              "system": "HR_Portal",
+              "access_level": "standard",
+              "action": "revoke",
+              "timestamp": "",
+              "performed_by": "emily69"
+            }
+          ]
+        }
+      ],
+      "dropped_false_positives": []
+    },
+    "AC-2": {
+      "id": "AC-2",
+      "name": "Segregation of duties",
+      "statement": "No user simultaneously holds two roles that form a segregation-of-duties (SoD) conflict.",
+      "tested": 200,
+      "passed": 193,
+      "exceptions_count": 5,
+      "escalated_count": 2,
+      "false_positives_dropped_count": 0,
+      "exceptions": [
+        {
+          "record_id": "EMP0046",
+          "rule": "conflict",
+          "confidence": 0.98,
+          "reasoning": "EMP0046 holds both 'create_user' and 'approve_access', a segregation-of-duties conflict (assignments ASG00067, ASG00068).",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Cited assignments hold conflicting pair ('create_user', 'approve_access')."
+          },
+          "evidence_cited": [
+            "assignment_id=ASG00067",
+            "assignment_id=ASG00068"
+          ],
+          "evidence": [
+            {
+              "assignment_id": "ASG00067",
+              "employee_id": "EMP0046",
+              "employee_name": "John Pierce",
+              "role": "create_user",
+              "assigned_date": "2024-10-11T09:00:00",
+              "assigned_by": "harttammy"
+            },
+            {
+              "assignment_id": "ASG00068",
+              "employee_id": "EMP0046",
+              "employee_name": "John Pierce",
+              "role": "approve_access",
+              "assigned_date": "2025-02-05T09:00:00",
+              "assigned_by": "paulscott"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0074",
+          "rule": "conflict",
+          "confidence": 0.98,
+          "reasoning": "EMP0074 holds both 'create_user' and 'approve_access', a segregation-of-duties conflict (assignments ASG00110, ASG00111).",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Cited assignments hold conflicting pair ('create_user', 'approve_access')."
+          },
+          "evidence_cited": [
+            "assignment_id=ASG00110",
+            "assignment_id=ASG00111"
+          ],
+          "evidence": [
+            {
+              "assignment_id": "ASG00110",
+              "employee_id": "EMP0074",
+              "employee_name": "Amy Silva",
+              "role": "create_user",
+              "assigned_date": "2025-01-21T09:00:00",
+              "assigned_by": "hallrachel"
+            },
+            {
+              "assignment_id": "ASG00111",
+              "employee_id": "EMP0074",
+              "employee_name": "Amy Silva",
+              "role": "approve_access",
+              "assigned_date": "2025-08-22T09:00:00",
+              "assigned_by": "enelson"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0079",
+          "rule": "conflict",
+          "confidence": 0.98,
+          "reasoning": "EMP0079 holds both 'create_vendor' and 'approve_payment', a segregation-of-duties conflict (assignments ASG00118, ASG00119).",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Cited assignments hold conflicting pair ('create_vendor', 'approve_payment')."
+          },
+          "evidence_cited": [
+            "assignment_id=ASG00118",
+            "assignment_id=ASG00119"
+          ],
+          "evidence": [
+            {
+              "assignment_id": "ASG00118",
+              "employee_id": "EMP0079",
+              "employee_name": "Lisa Barnes",
+              "role": "create_vendor",
+              "assigned_date": "2023-07-24T09:00:00",
+              "assigned_by": "patrick21"
+            },
+            {
+              "assignment_id": "ASG00119",
+              "employee_id": "EMP0079",
+              "employee_name": "Lisa Barnes",
+              "role": "approve_payment",
+              "assigned_date": "2025-02-05T09:00:00",
+              "assigned_by": "brian63"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0086",
+          "rule": "conflict",
+          "confidence": 0.98,
+          "reasoning": "EMP0086 holds both 'create_user' and 'approve_access', a segregation-of-duties conflict (assignments ASG00130, ASG00131).",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Cited assignments hold conflicting pair ('create_user', 'approve_access')."
+          },
+          "evidence_cited": [
+            "assignment_id=ASG00130",
+            "assignment_id=ASG00131"
+          ],
+          "evidence": [
+            {
+              "assignment_id": "ASG00130",
+              "employee_id": "EMP0086",
+              "employee_name": "Shirley Suarez",
+              "role": "create_user",
+              "assigned_date": "2025-05-10T09:00:00",
+              "assigned_by": "christopherjordan"
+            },
+            {
+              "assignment_id": "ASG00131",
+              "employee_id": "EMP0086",
+              "employee_name": "Shirley Suarez",
+              "role": "approve_access",
+              "assigned_date": "2025-01-15T09:00:00",
+              "assigned_by": "fgarcia"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0138",
+          "rule": "conflict",
+          "confidence": 0.98,
+          "reasoning": "EMP0138 holds both 'create_vendor' and 'approve_payment', a segregation-of-duties conflict (assignments ASG00208, ASG00209).",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Cited assignments hold conflicting pair ('create_vendor', 'approve_payment')."
+          },
+          "evidence_cited": [
+            "assignment_id=ASG00208",
+            "assignment_id=ASG00209"
+          ],
+          "evidence": [
+            {
+              "assignment_id": "ASG00208",
+              "employee_id": "EMP0138",
+              "employee_name": "David Alvarez",
+              "role": "create_vendor",
+              "assigned_date": "2024-10-24T09:00:00",
+              "assigned_by": "fbaker"
+            },
+            {
+              "assignment_id": "ASG00209",
+              "employee_id": "EMP0138",
+              "employee_name": "David Alvarez",
+              "role": "approve_payment",
+              "assigned_date": "2025-10-29T09:00:00",
+              "assigned_by": "hgrimes"
+            }
+          ]
+        }
+      ],
+      "escalated": [
+        {
+          "record_id": "EMP0032",
+          "rule": "malformed_evidence",
+          "confidence": 0.45,
+          "reasoning": "EMP0032 has a blank/unrecognised role (['']); cannot confirm SoD status. Routing to human review.",
+          "verifier": {
+            "verdict": "uncertain",
+            "note": "Blank/unknown role confirmed; escalate."
+          },
+          "evidence_cited": [
+            "assignment_id=ASG00045",
+            "assignment_id=ASG00046"
+          ],
+          "evidence": [
+            {
+              "assignment_id": "ASG00045",
+              "employee_id": "EMP0032",
+              "employee_name": "Tricia Valencia",
+              "role": "read_only",
+              "assigned_date": "2023-11-20T09:00:00",
+              "assigned_by": "avilatiffany"
+            },
+            {
+              "assignment_id": "ASG00046",
+              "employee_id": "EMP0032",
+              "employee_name": "Tricia Valencia",
+              "role": "",
+              "assigned_date": "2025-10-18T09:00:00",
+              "assigned_by": "inunez"
+            }
+          ]
+        },
+        {
+          "record_id": "EMP0102",
+          "rule": "malformed_evidence",
+          "confidence": 0.45,
+          "reasoning": "EMP0102 has a blank/unrecognised role (['']); cannot confirm SoD status. Routing to human review.",
+          "verifier": {
+            "verdict": "uncertain",
+            "note": "Blank/unknown role confirmed; escalate."
+          },
+          "evidence_cited": [
+            "assignment_id=ASG00154",
+            "assignment_id=ASG00155"
+          ],
+          "evidence": [
+            {
+              "assignment_id": "ASG00154",
+              "employee_id": "EMP0102",
+              "employee_name": "Rebecca Valencia",
+              "role": "read_only",
+              "assigned_date": "2024-09-18T09:00:00",
+              "assigned_by": "fuenteslaura"
+            },
+            {
+              "assignment_id": "ASG00155",
+              "employee_id": "EMP0102",
+              "employee_name": "Rebecca Valencia",
+              "role": "",
+              "assigned_date": "2023-09-15T09:00:00",
+              "assigned_by": "ichambers"
+            }
+          ]
+        }
+      ],
+      "dropped_false_positives": []
+    },
+    "AC-3": {
+      "id": "AC-3",
+      "name": "Privileged access authorisation",
+      "statement": "Every privileged-access grant has a matching request that was approved by an authorised approver.",
+      "tested": 20,
+      "passed": 12,
+      "exceptions_count": 6,
+      "escalated_count": 2,
+      "false_positives_dropped_count": 0,
+      "exceptions": [
+        {
+          "record_id": "EVT00404",
+          "rule": "no_ticket",
+          "confidence": 0.95,
+          "reasoning": "Privileged grant EVT00404 (Billing) for EMP0020 has no matching approval ticket.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "No ticket present in cited evidence."
+          },
+          "evidence_cited": [
+            "event_id=EVT00404"
+          ],
+          "evidence": [
+            {
+              "event_id": "EVT00404",
+              "employee_id": "EMP0020",
+              "employee_name": "Margaret Hawkins DDS",
+              "system": "Billing",
+              "access_level": "privileged",
+              "action": "grant",
+              "timestamp": "2025-07-19T09:00:00",
+              "performed_by": "wagnerdana"
+            }
+          ]
+        },
+        {
+          "record_id": "EVT00405",
+          "rule": "no_ticket",
+          "confidence": 0.95,
+          "reasoning": "Privileged grant EVT00405 (VPN) for EMP0128 has no matching approval ticket.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "No ticket present in cited evidence."
+          },
+          "evidence_cited": [
+            "event_id=EVT00405"
+          ],
+          "evidence": [
+            {
+              "event_id": "EVT00405",
+              "employee_id": "EMP0128",
+              "employee_name": "Cameron Fisher",
+              "system": "VPN",
+              "access_level": "privileged",
+              "action": "grant",
+              "timestamp": "2025-07-07T09:00:00",
+              "performed_by": "kjones"
+            }
+          ]
+        },
+        {
+          "record_id": "EVT00406",
+          "rule": "no_ticket",
+          "confidence": 0.95,
+          "reasoning": "Privileged grant EVT00406 (ERP) for EMP0133 has no matching approval ticket.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "No ticket present in cited evidence."
+          },
+          "evidence_cited": [
+            "event_id=EVT00406"
+          ],
+          "evidence": [
+            {
+              "event_id": "EVT00406",
+              "employee_id": "EMP0133",
+              "employee_name": "Daniel Kennedy",
+              "system": "ERP",
+              "access_level": "privileged",
+              "action": "grant",
+              "timestamp": "2025-08-08T09:00:00",
+              "performed_by": "grahamtamara"
+            }
+          ]
+        },
+        {
+          "record_id": "EVT00407",
+          "rule": "no_ticket",
+          "confidence": 0.95,
+          "reasoning": "Privileged grant EVT00407 (Billing) for EMP0199 has no matching approval ticket.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "No ticket present in cited evidence."
+          },
+          "evidence_cited": [
+            "event_id=EVT00407"
+          ],
+          "evidence": [
+            {
+              "event_id": "EVT00407",
+              "employee_id": "EMP0199",
+              "employee_name": "Nathan Freeman",
+              "system": "Billing",
+              "access_level": "privileged",
+              "action": "grant",
+              "timestamp": "2025-08-25T09:00:00",
+              "performed_by": "kellyrosales"
+            }
+          ]
+        },
+        {
+          "record_id": "EVT00408",
+          "rule": "unauthorised_approver",
+          "confidence": 0.9,
+          "reasoning": "Privileged grant EVT00408 for EMP0148 is only approved by 'Contractor' (ticket TKT00012), not an authorised approver role (IT_Manager, Security_Officer).",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "Approving role is not in the authorised set."
+          },
+          "evidence_cited": [
+            "event_id=EVT00408",
+            "ticket_id=TKT00012"
+          ],
+          "evidence": [
+            {
+              "event_id": "EVT00408",
+              "employee_id": "EMP0148",
+              "employee_name": "Kathy Rivas",
+              "system": "HR_Portal",
+              "access_level": "privileged",
+              "action": "grant",
+              "timestamp": "2025-03-24T09:00:00",
+              "performed_by": "vhaynes"
+            },
+            {
+              "ticket_id": "TKT00012",
+              "employee_id": "EMP0148",
+              "system": "HR_Portal",
+              "access_level": "privileged",
+              "approver": "mtaylor",
+              "approver_role": "Contractor",
+              "status": "approved",
+              "decision_date": "2025-03-21T09:00:00"
+            }
+          ]
+        },
+        {
+          "record_id": "EVT00409",
+          "rule": "no_ticket",
+          "confidence": 0.95,
+          "reasoning": "Privileged grant EVT00409 (HR_Portal) for EMP0099 has no matching approval ticket.",
+          "verifier": {
+            "verdict": "confirmed",
+            "note": "No ticket present in cited evidence."
+          },
+          "evidence_cited": [
+            "event_id=EVT00409"
+          ],
+          "evidence": [
+            {
+              "event_id": "EVT00409",
+              "employee_id": "EMP0099",
+              "employee_name": "Stephen Mckee",
+              "system": "HR_Portal",
+              "access_level": "privileged",
+              "action": "grant",
+              "timestamp": "2025-10-28T09:00:00",
+              "performed_by": "louis43"
+            }
+          ]
+        }
+      ],
+      "escalated": [
+        {
+          "record_id": "EVT00410",
+          "rule": "malformed_evidence",
+          "confidence": 0.42,
+          "reasoning": "Ticket TKT00013 for grant EVT00410 is marked 'approved' but its approver/approver_role is blank; contradictory evidence. Routing to human review.",
+          "verifier": {
+            "verdict": "uncertain",
+            "note": "Contradictory ticket confirmed; escalate."
+          },
+          "evidence_cited": [
+            "event_id=EVT00410",
+            "ticket_id=TKT00013"
+          ],
+          "evidence": [
+            {
+              "event_id": "EVT00410",
+              "employee_id": "EMP0036",
+              "employee_name": "Sherri Baker",
+              "system": "ERP",
+              "access_level": "privileged",
+              "action": "grant",
+              "timestamp": "2025-04-02T09:00:00",
+              "performed_by": "hardingderek"
+            },
+            {
+              "ticket_id": "TKT00013",
+              "employee_id": "EMP0036",
+              "system": "ERP",
+              "access_level": "privileged",
+              "approver": "",
+              "approver_role": "",
+              "status": "approved",
+              "decision_date": "2025-04-01T09:00:00"
+            }
+          ]
+        },
+        {
+          "record_id": "EVT00411",
+          "rule": "malformed_evidence",
+          "confidence": 0.42,
+          "reasoning": "Ticket TKT00014 for grant EVT00411 is marked 'approved' but its approver/approver_role is blank; contradictory evidence. Routing to human review.",
+          "verifier": {
+            "verdict": "uncertain",
+            "note": "Contradictory ticket confirmed; escalate."
+          },
+          "evidence_cited": [
+            "event_id=EVT00411",
+            "ticket_id=TKT00014"
+          ],
+          "evidence": [
+            {
+              "event_id": "EVT00411",
+              "employee_id": "EMP0157",
+              "employee_name": "Jason Stein",
+              "system": "Billing",
+              "access_level": "privileged",
+              "action": "grant",
+              "timestamp": "2025-04-18T09:00:00",
+              "performed_by": "moorefrank"
+            },
+            {
+              "ticket_id": "TKT00014",
+              "employee_id": "EMP0157",
+              "system": "Billing",
+              "access_level": "privileged",
+              "approver": "",
+              "approver_role": "",
+              "status": "approved",
+              "decision_date": "2025-04-16T09:00:00"
+            }
+          ]
+        }
+      ],
+      "dropped_false_positives": []
+    }
+  }
+}

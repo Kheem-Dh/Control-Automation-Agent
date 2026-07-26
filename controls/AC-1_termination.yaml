@@ -1,0 +1,25 @@
+id: AC-1
+name: Timely termination of access
+statement: >-
+  Terminated employees have all system access revoked within the policy
+  window (24 hours) of their termination date.
+population: hr_terminations
+exception_definition: >-
+  A terminated employee who still holds active system access, or whose access
+  was revoked later than the policy window after termination.
+
+# Policy window: access must be revoked within this many hours of termination.
+revocation_window_hours: 24
+
+# Evidence files this control reads.
+evidence:
+  - hr_terminations
+  - access_log
+
+# Confidence tuning (rule-only mode). Clear, well-evidenced exceptions score
+# high; missing/malformed timestamps score below the escalation threshold so
+# they route to a human instead of being guessed.
+confidence:
+  never_revoked: 0.90        # grant present, no revoke row at all
+  revoked_late: 0.97         # revoke timestamp beyond the window
+  malformed_evidence: 0.40   # missing/unparseable termination or revoke time

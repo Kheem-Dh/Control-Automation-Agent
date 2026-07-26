@@ -1,0 +1,26 @@
+employee_id,employee_name,department,termination_date,termination_type
+EMP0066,Tracy House,IT,2025-12-23T09:00:00,voluntary
+EMP0052,Crystal Robinson,HR,2025-11-06T09:00:00,voluntary
+EMP0171,Darlene Miller,Finance,2025-10-04T09:00:00,involuntary
+EMP0183,Ashley Barton,Sales,2025-12-24T09:00:00,involuntary
+EMP0080,Kelly Donovan,Operations,2025-11-30T09:00:00,retirement
+EMP0061,Gerald Hensley,IT,2025-12-10T09:00:00,voluntary
+EMP0067,Carol Tucker,IT,,voluntary
+EMP0101,Cameron Parker,IT,,voluntary
+EMP0033,Nathan Maldonado,Legal,2025-11-03T09:00:00,involuntary
+EMP0197,Spencer Haynes,HR,2025-09-07T09:00:00,involuntary
+EMP0165,John Anderson,Finance,2025-12-22T09:00:00,involuntary
+EMP0076,Angela Lopez,Finance,2025-10-11T09:00:00,involuntary
+EMP0117,Ashley Waller,Sales,2025-09-14T09:00:00,involuntary
+EMP0195,Allen Rosales,Operations,2025-12-18T09:00:00,voluntary
+EMP0018,Lisa Jackson,Finance,2025-10-19T09:00:00,involuntary
+EMP0002,Angie Henderson,Sales,2025-09-16T09:00:00,retirement
+EMP0187,Samantha Garcia,Finance,2025-10-20T09:00:00,retirement
+EMP0159,Jamie Smith,IT,2025-10-29T09:00:00,involuntary
+EMP0144,Amber Wright,HR,2025-12-03T09:00:00,retirement
+EMP0025,Judy Baker,Finance,2025-10-06T09:00:00,retirement
+EMP0185,Dr. Hannah Patterson,HR,2025-12-19T09:00:00,retirement
+EMP0137,Courtney Gonzalez,Operations,2025-09-22T09:00:00,involuntary
+EMP0054,Shannon Jones,Legal,2025-09-29T09:00:00,voluntary
+EMP0129,Megan Orr,Operations,2025-09-27T09:00:00,involuntary
+EMP0193,Angelica Keith,Finance,2025-09-22T09:00:00,retirement
